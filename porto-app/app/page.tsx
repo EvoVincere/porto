@@ -1,35 +1,12 @@
-'use client';
-import React, {useEffect, useState} from 'react'
+import { Hero } from '@/components'
+import React from 'react'
+import Image from 'next/image'
 
-function page() {
-
-  const [message, setMessage] = useState("Loading")
-  const [people,setPeople] = useState([]);
-  useEffect(()=> {
-    fetch("http://localhost:8080/api/home").then(
-      response => response.json()
-    ).then(
-      data => {
-        console.log(data)
-        setMessage(data.message)
-        setPeople(data.people)
-      }
-    )
-  }, [])
-
+export default function Home() {
   return (
-    <div>
-      <div>{message}</div>
-
-      {
-        people.map((person, index) => (
-          <div key={index}>
-            {person}
-          </div>
-        ))
-      }
-      </div>
+    <main className='overflow-hidden'>
+      <Hero />
+    </main>
   )
 }
 
-export default page
